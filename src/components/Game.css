@@ -1,0 +1,7 @@
+.Game{
+    height: 200px;
+    width: 200px;
+    display:grid;
+    grid-template: 1fr 1fr/1fr 1fr;
+    background-color: black;
+}
