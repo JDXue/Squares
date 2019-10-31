@@ -3,21 +3,25 @@ import ColourCell from './ColourCell'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 
+//values that should not run everytime game function is called
 const colours = ['Red','Green','Yellow','Blue']
+let newComputerSequence = []
+let hasExampleRun = false
 
 //computerSequence needs to remain outside the Game component in order to prevent the computerSequence
 function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
-    let newComputerSequence = []
+    let strComputerSequence
     const[userSequence, setUserSequence] = React.useState([])
-
-
     console.log(`Has game started? ${hasGameStarted}`)
 
-    if(hasGameStarted){
+
+    if((hasGameStarted)&&(!hasExampleRun)){
         newComputerSequence = addToComputerSequence(computerSequence)
+        strComputerSequence = newComputerSequence.join(', ')
+
         //setComputerSequence(newComputerSequence)
-        console.log()
         console.log(`My computer's sequence is ${newComputerSequence.length} long`)
+        hasExampleRun = true
     }
 
     if (newComputerSequence.length > 0){
@@ -25,6 +29,7 @@ function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
                 <>
                 <h3>Round {round}</h3>
                 <br></br>
+                <h4>{strComputerSequence}</h4>
                 {/* <h4>{newComputerSequence}</h4> */}
                 <ColourCell
                     colour={'Red'}
@@ -50,6 +55,7 @@ function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
 
                 />
                 <Button
+                    variant="info"
                     onClick={() => {
                         //testUserSequence()
                         //addToComputerSequence(colours, setComputerSequence, computerSequence)
@@ -62,29 +68,7 @@ function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
     //default return for game
     return(
         <>
-            {/* <ColourCell
-                colour={'Red'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-            />
-            <ColourCell
-                colour={'Green'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            />
-            <ColourCell
-                colour={'Yellow'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            />
-            <ColourCell
-                colour={'Blue'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            /> */}
+            {/* empty fragment */}
         </>
     )
 }
@@ -98,3 +82,4 @@ const addToComputerSequence = (computerSequence) => {
     console.log(`Here is my computer's random sequence: ${computerSequenceClone}`)
     return computerSequenceClone
 }
+
