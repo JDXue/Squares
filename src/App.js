@@ -4,18 +4,23 @@ import './App.css';
 
 import Game from './components/Game';
 import './components/Game.css'
+import StartGame from './components/StartGame';
 
 
 
 
 function App() {
+  const[hasGameStarted, setHasGameStarted] = React.setState(false)
   return (
     <>
-      <h1>Simon Says</h1>
+      <h1>Simon</h1>
 
-      <div>
       <Game/>
-      </div>
+      {/* <Instructions/> */}
+      <StartGame
+        hasGameStarted={hasGameStarted}
+        setHasGameStarted={setHasGameStarted}
+      />
     </>
   );
 }

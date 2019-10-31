@@ -5,16 +5,16 @@ import { Button } from 'react-bootstrap'
 function ColourCell({ colour, setUserSequence, userSequence }){
     let buttonColour = ''
     switch (colour) {
-        case 'Red': buttonColour = 'danger'
+        case 'Red': buttonColour = 'outline-danger'
         break
 
-        case 'Yellow': buttonColour = 'warning'
+        case 'Yellow': buttonColour = 'outline-warning'
         break
 
-        case 'Green': buttonColour = 'success'
+        case 'Green': buttonColour = 'outline-success'
         break
 
-        case 'Blue': buttonColour = 'primary'
+        case 'Blue': buttonColour = 'outline-primary'
         break
     }
     return(
@@ -22,7 +22,8 @@ function ColourCell({ colour, setUserSequence, userSequence }){
             variant = {buttonColour}
             onClick = { () => {
                 console.log(colour,userSequence)
-                setUserSequence(addToUserSequence(colour))
+                setUserSequence(addToUserSequence(colour, userSequence))
+                console.log(`After setUserSequence():  ${userSequence}`)
         }}>
             {colour}
         </Button>
@@ -33,6 +34,14 @@ export default ColourCell
 
 
 const addToUserSequence = (colour, userSequence) => {
-    let userSequenceClone =  [...]
+    let userSequenceClone =  [...userSequence]
+    userSequenceClone.push(colour)
+    console.log(`The colour ${colour} has been added to this array here: ${userSequenceClone}`)
+    console.log(`Here is the original ${userSequence}`)
+    //console.log(typeof ['hello','hi'])
+    console.log(typeof userSequence)
+    return(
+        userSequenceClone
+    )
 }
 
