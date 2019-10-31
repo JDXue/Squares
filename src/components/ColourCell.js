@@ -23,7 +23,7 @@ function ColourCell({ colour, setUserSequence, userSequence }){
             onClick = { () => {
                 console.log(colour,userSequence)
                 setUserSequence(addToUserSequence(colour, userSequence))
-                console.log(`After setUserSequence():  ${userSequence}`)
+                console.log(`After setUserSequence() userSequence is:  ${addToUserSequence(colour, userSequence)}`) //why is userSequence always one behind userSequenceClone?
         }}>
             {colour}
         </Button>
@@ -37,9 +37,8 @@ const addToUserSequence = (colour, userSequence) => {
     let userSequenceClone =  [...userSequence]
     userSequenceClone.push(colour)
     console.log(`The colour ${colour} has been added to this array here: ${userSequenceClone}`)
-    console.log(`Here is the original ${userSequence}`)
-    //console.log(typeof ['hello','hi'])
-    console.log(typeof userSequence)
+    console.log(`Here is the original array ${userSequence}`)
+    //console.log(typeof userSequence)
     return(
         userSequenceClone
     )
