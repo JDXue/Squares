@@ -10,8 +10,10 @@ import Game from './components/Game'
 function App() {
   const [hasGameStarted,setHasGameStarted] = React.useState(false)
   const [round, setRound] = React.useState(0)
+  const[computerSequence, setComputerSequence] = React.useState([])
+
   return (
-    <>
+    <div className="container">
       <h1>Simon</h1>
       <br></br>
 
@@ -27,8 +29,10 @@ function App() {
         hasGameStarted={hasGameStarted}
         round={round}
         setRound={setRound}
+        computerSequence={computerSequence}
+        setComputerSequence={setComputerSequence}
       />
-    </>
+    </div>
   );
 }
 

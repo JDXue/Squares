@@ -5,60 +5,64 @@ import { Button } from 'react-bootstrap'
 
 const colours = ['Red','Green','Yellow','Blue']
 
-function Game({ hasGameStarted, round}){
-
+//computerSequence needs to remain outside the Game component in order to prevent the computerSequence
+function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
+    let newComputerSequence = []
     const[userSequence, setUserSequence] = React.useState([])
-    const[computerSequence, setComputerSequence] = React.useState([])
+
 
     console.log(`Has game started? ${hasGameStarted}`)
 
     if(hasGameStarted){
-        let newComputerSequence = addToComputerSequence(computerSequence)
+        newComputerSequence = addToComputerSequence(computerSequence)
         //setComputerSequence(newComputerSequence)
         console.log()
         console.log(`My computer's sequence is ${newComputerSequence.length} long`)
-            if (newComputerSequence.length > 0){
-                return(
-                    <>
-                    <h3>Round {round}</h3>
-                    <br></br>
-                    <ColourCell
-                        colour={'Red'}
-                        setUserSequence={setUserSequence}
-                        userSequence={userSequence}
-                    />
-                    <ColourCell
-                        colour={'Green'}
-                        setUserSequence={setUserSequence}
-                        userSequence={userSequence}
-
-                    />
-                    <ColourCell
-                        colour={'Yellow'}
-                        setUserSequence={setUserSequence}
-                        userSequence={userSequence}
-
-                    />
-                    <ColourCell
-                        colour={'Blue'}
-                        setUserSequence={setUserSequence}
-                        userSequence={userSequence}
-
-                    />
-                    <Button
-                        onClick={() => {
-                            addToComputerSequence(colours, setComputerSequence, computerSequence)
-                        }}
-                    >Next Round</Button>
-                </>
-                )
-            }
     }
 
+    if (newComputerSequence.length > 0){
+            return(
+                <>
+                <h3>Round {round}</h3>
+                <br></br>
+                {/* <h4>{newComputerSequence}</h4> */}
+                <ColourCell
+                    colour={'Red'}
+                    setUserSequence={setUserSequence}
+                    userSequence={userSequence}
+                />
+                <ColourCell
+                    colour={'Green'}
+                    setUserSequence={setUserSequence}
+                    userSequence={userSequence}
 
+                />
+                <ColourCell
+                    colour={'Yellow'}
+                    setUserSequence={setUserSequence}
+                    userSequence={userSequence}
+
+                />
+                <ColourCell
+                    colour={'Blue'}
+                    setUserSequence={setUserSequence}
+                    userSequence={userSequence}
+
+                />
+                <Button
+                    onClick={() => {
+                        //testUserSequence()
+                        //addToComputerSequence(colours, setComputerSequence, computerSequence)
+                    }}
+                >Test Sequence</Button>
+            </>
+            )
+        }
+
+    //default return for game
     return(
         <>
-            <ColourCell
+            {/* <ColourCell
                 colour={'Red'}
                 setUserSequence={setUserSequence}
                 userSequence={userSequence}
@@ -80,7 +84,7 @@ function Game({ hasGameStarted, round}){
                 setUserSequence={setUserSequence}
                 userSequence={userSequence}
 
-            />
+            /> */}
         </>
     )
 }

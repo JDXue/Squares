@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 
 function StartGame({ hasGameStarted, setHasGameStarted, setRound}){
     return(
-        <>
+        <div className="container">
            <Button
             variant="info"
             onClick={ () => {
@@ -19,7 +19,7 @@ function StartGame({ hasGameStarted, setHasGameStarted, setRound}){
 
             }}
             >Start Game</Button>
-        </>
+        </div>
     )
 }
 
