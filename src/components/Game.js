@@ -57,7 +57,7 @@ function Game({ hasGameStarted, round, computerSequence, setComputerSequence}){
                 <Button
                     variant="info"
                     onClick={() => {
-                        //testUserSequence()
+                        testUserSequence(userSequence, newComputerSequence)
                         //addToComputerSequence(colours, setComputerSequence, computerSequence)
                     }}
                 >Test Sequence</Button>
@@ -82,4 +82,11 @@ const addToComputerSequence = (computerSequence) => {
     console.log(`Here is my computer's random sequence: ${computerSequenceClone}`)
     return computerSequenceClone
 }
+
+const testUserSequence = (userSequence, newComputerSequence) => {
+    console.log(`computer's: ${newComputerSequence}`)
+    console.log(`user's: ${userSequence}`)
+}
+
+
 
