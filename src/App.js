@@ -11,25 +11,29 @@ function App() {
   const [round, setRound] = React.useState(0)
 
   return (
-    <div className="container">
-      <h1>Simon Says</h1>
-      <br></br>
-      <Instructions/>
-      <br></br>
+    <div className="container App">
+      { (!hasGameStarted)
+        ?<>
+          <h1>Simon Says</h1>
+          <br></br>
+          <Instructions/>
+          <br></br>
 
-      <>
-        {
-          (!hasGameStarted)
-            ? <StartGame
-              hasGameStarted={hasGameStarted}
-              setHasGameStarted={setHasGameStarted}
-              setRound={setRound}
-              />
-            : <p></p>
-        }
-      </>
+          <>
+            {
+              (!hasGameStarted)
+                ? <StartGame
+                  hasGameStarted={hasGameStarted}
+                  setHasGameStarted={setHasGameStarted}
+                  setRound={setRound}
+                  />
+                : <p></p>
+            }
+          </>
+          </>
+          : <></>
 
-
+      }
       <br></br><br></br>
       <Game
         hasGameStarted={hasGameStarted}
