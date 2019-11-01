@@ -20,132 +20,96 @@ function Game({ hasGameStarted, round, setRound}){
     //boolean allows the computer's sequence to toggle on and off, set by ColourCell and TestSequence
     const[showComputerSequence, setShowComputerSequence] = React.useState(true)
 
-    console.log(`Has game started? ${hasGameStarted}`)
+    //console.log(`Has game started? ${hasGameStarted}`)
 
     //Output 1: when new colour has not been added this should run once
     if ((hasGameStarted) && (showComputerSequence)){
         console.log(`Computer sequence: ${computerSequence}`)
-        // strComputerSequence = computerSequence.join(' ')
-            return(
-                <>
-                <h3>Round {round}</h3>
-                <br></br>
-                <br></br>
-
-                <ColourCell
-                    setShowComputerSequence={setShowComputerSequence}
-                    colour={'Red'}
-                    setUserSequence={setUserSequence}
-                    userSequence={userSequence}
-                />
-                <ColourCell
-                    setShowComputerSequence={setShowComputerSequence}
-                    colour={'Green'}
-                    setUserSequence={setUserSequence}
-                    userSequence={userSequence}
-
-                />
-                <ColourCell
-                    setShowComputerSequence={setShowComputerSequence}
-                    colour={'Yellow'}
-                    setUserSequence={setUserSequence}
-                    userSequence={userSequence}
-
-                />
-                <ColourCell
-                    setShowComputerSequence={setShowComputerSequence}
-                    colour={'Blue'}
-                    setUserSequence={setUserSequence}
-                    userSequence={userSequence}
-
-                />
-                <TestSequence
-                    round={round}
-                    setRound={setRound}
-                    isCorrectSequence={isCorrectSequence}
-                    userSequence={userSequence}
-                    setUserSequence={setUserSequence}
-                    computerSequence={computerSequence}
-                    setShowComputerSequence={setShowComputerSequence}
-                />
-
-                <br></br>
-                <AddToComputerSequence
-                    computerSequence={computerSequence}
-                    setComputerSequence={setComputerSequence}
-                />
-            </>
-            )
-        }
-    //Output 2: if user starts entering their sequence, computer sequence is hidden
-    else if ((hasGameStarted)&&(isCorrectSequence)){
-        console.log(`Computer sequence: ${computerSequence}`)
-        return(
-            <>
-            <h3>Round {round}</h3>
-            <br></br>
-
-
-            <br></br>
-
-            <ColourCell
-                setShowComputerSequence={setShowComputerSequence}
-                colour={'Red'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-            />
-            <ColourCell
-                setShowComputerSequence={setShowComputerSequence}
-                colour={'Green'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            />
-            <ColourCell
-                setShowComputerSequence={setShowComputerSequence}
-                colour={'Yellow'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            />
-            <ColourCell
-                setShowComputerSequence={setShowComputerSequence}
-                colour={'Blue'}
-                setUserSequence={setUserSequence}
-                userSequence={userSequence}
-
-            />
-            <TestSequence
-                round={round}
-                setRound={setRound}
-                isCorrectSequence={isCorrectSequence}
-                setIsCorrectSequence={setIsCorrectSequence}
-                userSequence={userSequence}
-                setUserSequence={setUserSequence}
-                computerSequence={computerSequence}
-                setShowComputerSequence={setShowComputerSequence}
-            />
-        </>
-        )
-
-    }
-
-    else if((hasGameStarted) && (!isCorrectSequence)){
-        return(
-            <>
-            <h1>{`Incorrect! You managed to reach round ${round}`}</h1>
-            <h2>{`Refresh page to try again`}</h2>
-            </>
-        )
     }
 
 
-    //default return for game before start button pressed
     return(
         <>
-            {/* empty fragment */}
-        </>
-    )
+
+            <>
+                { //display colours
+                    (hasGameStarted)
+                    ? <>
+                        <h3>Round {round}</h3>
+                        <br></br>
+                        <br></br>
+
+                            <ColourCell
+                                setShowComputerSequence={setShowComputerSequence}
+                                colour={'Red'}
+                                setUserSequence={setUserSequence}
+                                userSequence={userSequence}
+                                />
+                            <ColourCell
+                                setShowComputerSequence={setShowComputerSequence}
+                                colour={'Green'}
+                                setUserSequence={setUserSequence}
+                                userSequence={userSequence}
+
+                                />
+                            <ColourCell
+                                setShowComputerSequence={setShowComputerSequence}
+                                colour={'Yellow'}
+                                setUserSequence={setUserSequence}
+                                userSequence={userSequence}
+
+                                />
+                            <ColourCell
+                                setShowComputerSequence={setShowComputerSequence}
+                                colour={'Blue'}
+                                setUserSequence={setUserSequence}
+                                userSequence={userSequence}
+
+                                />
+                            <TestSequence
+                                round={round}
+                                setRound={setRound}
+                                isCorrectSequence={isCorrectSequence}
+                                setIsCorrectSequence={setIsCorrectSequence}
+                                userSequence={userSequence}
+                                setUserSequence={setUserSequence}
+                                computerSequence={computerSequence}
+                                setShowComputerSequence={setShowComputerSequence}
+                                />
+
+                        </>
+                            : <></>
+                    }
+            </>
+
+            <>
+                { //display end game message
+                    ((hasGameStarted) && (!isCorrectSequence))
+                    ?<>
+                        <br></br>
+                        <h1>{`Incorrect! You managed to reach round ${round}`}</h1>
+                        <h2>{`Refresh page to try again`}</h2>
+                    </>
+                    : <></>
+                }
+            </>
+
+
+
+            <>
+                { //display colour sequence
+                    ((hasGameStarted) && (showComputerSequence))
+                    ? <AddToComputerSequence
+                    computerSequence={computerSequence}
+                    setComputerSequence={setComputerSequence}
+                    />
+                    : <p></p>
+                }
+            </>
+    </>
+
+)
+
 }
 
 export default Game;

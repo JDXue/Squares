@@ -17,7 +17,7 @@ function App() {
       <Instructions/>
       <br></br>
 
-      <div>
+      <>
         {
           (!hasGameStarted)
             ? <StartGame
@@ -27,7 +27,7 @@ function App() {
               />
             : <p></p>
         }
-      </div>
+      </>
 
 
       <br></br><br></br>

@@ -11,11 +11,10 @@ function AddToComputerSequence({computerSequence, setComputerSequence}){
         //console.log(`Computer Sequence is: ${computerSequence}`)
         setComputerSequence(addToComputerSequence)
         hasAddedToSequence = true
-        // strComputerSequence = convertToString(computerSequence)
     }, [])
     return(
         <>
-            <h4>{'Enter this sequence: '}</h4>
+            <h4>{'Enter the sequence: '}</h4>
             <h4>{computerSequence}</h4>
         </>
     )
