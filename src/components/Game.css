@@ -1,7 +1,13 @@
-.Game{
-    height: 200px;
-    width: 200px;
+.colour-grid{
+    height: 300px;
+    width: 300px;
     display:grid;
     grid-template: 1fr 1fr/1fr 1fr;
-    background-color: black;
+
+}
+
+.game-grid{
+    display: grid;
+    grid-template: 1fr 1fr / 1fr ;
+    justify-items: center;
 }
