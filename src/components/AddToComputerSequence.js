@@ -8,13 +8,16 @@ let strComputerSequence = ''
 function AddToComputerSequence({computerSequence, setComputerSequence}){
     React.useEffect(() => {
         //console.log('Used useEffect() in AddToComputerSequence')
-        console.log(`Computer Sequence is: ${computerSequence}`)
+        //console.log(`Computer Sequence is: ${computerSequence}`)
         setComputerSequence(addToComputerSequence)
         hasAddedToSequence = true
-        strComputerSequence = convertToString(computerSequence)
+        // strComputerSequence = convertToString(computerSequence)
     }, [])
     return(
-        <h4>{computerSequence}</h4>
+        <>
+            <h4>{'Enter this sequence: '}</h4>
+            <h4>{computerSequence}</h4>
+        </>
     )
 }
 
@@ -26,12 +29,12 @@ const addToComputerSequence = (computerSequence) => {
     return computerSequenceClone
 }
 
-const convertToString = (computerSequence) => {
-    let computerSequenceClone = [...computerSequence]
-    //console.log(computerSequenceClone)
-    console.log(computerSequenceClone)
-    console.log(computerSequenceClone.join(' '))
-    return computerSequenceClone.join(' ')
-}
+// const convertToString = (computerSequence) => {
+//     let computerSequenceClone = [...computerSequence]
+//     //console.log(computerSequenceClone)
+//     //console.log(computerSequenceClone)
+//     console.log(computerSequenceClone.join(' '))
+//     return computerSequenceClone.join(' ')
+// }
 
 export default AddToComputerSequence

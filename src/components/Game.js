@@ -1,3 +1,5 @@
+import './Game.css'
+
 import React from 'react'
 import ColourCell from './ColourCell'
 import TestSequence from './TestSequence'
@@ -28,12 +30,6 @@ function Game({ hasGameStarted, round, setRound}){
                 <>
                 <h3>Round {round}</h3>
                 <br></br>
-
-                <AddToComputerSequence
-                    computerSequence={computerSequence}
-                    setComputerSequence={setComputerSequence}
-                />
-
                 <br></br>
 
                 <ColourCell
@@ -71,6 +67,12 @@ function Game({ hasGameStarted, round, setRound}){
                     setUserSequence={setUserSequence}
                     computerSequence={computerSequence}
                     setShowComputerSequence={setShowComputerSequence}
+                />
+
+                <br></br>
+                <AddToComputerSequence
+                    computerSequence={computerSequence}
+                    setComputerSequence={setComputerSequence}
                 />
             </>
             )
