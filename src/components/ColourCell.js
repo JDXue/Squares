@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap'
 
-function ColourCell({ colour, setUserSequence, userSequence }){
+function ColourCell({ colour, setUserSequence, userSequence, setShowComputerSequence }){
     let buttonColour = ''
     switch (colour) {
         case 'Red': buttonColour = 'outline-danger'
@@ -18,15 +18,20 @@ function ColourCell({ colour, setUserSequence, userSequence }){
         break
     }
     return(
+        <>
         <Button
             variant = {buttonColour}
             onClick = { () => {
-                console.log(colour,userSequence)
+                //computerSequence should hide when the user begins adding their sequence
+                setShowComputerSequence(false)
+                //console.log(colour,userSequence)
                 setUserSequence(addToUserSequence(colour, userSequence))
-                console.log(`After setUserSequence() userSequence is:  ${addToUserSequence(colour, userSequence)}`) //why is userSequence always one behind userSequenceClone?
+                console.log(`userSequence is:  ${addToUserSequence(colour, userSequence)}`)
         }}>
             {colour}
         </Button>
+        </>
+
     )
 }
 
@@ -36,8 +41,8 @@ export default ColourCell
 const addToUserSequence = (colour, userSequence) => {
     let userSequenceClone =  [...userSequence]
     userSequenceClone.push(colour)
-    console.log(`The colour ${colour} has been added to this array here: ${userSequenceClone}`)
-    console.log(`Here is the original array ${userSequence}`)
+    //console.log(`The colour ${colour} has been added to this array here: ${userSequenceClone}`)
+    //console.log(`Here is the original array ${userSequence}`)
     //console.log(typeof userSequence)
     return(
         userSequenceClone
