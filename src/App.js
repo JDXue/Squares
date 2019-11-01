@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Simon</h1>
+      <h1>Simon Says</h1>
       <br></br>
 
 
