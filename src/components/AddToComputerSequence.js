@@ -1,16 +1,14 @@
+import './Game.css'
+
 import React from 'react'
 
-
 const colours = ['Red','Green','Yellow','Blue']
-let hasAddedToSequence = false
-let strComputerSequence = ''
 
 function AddToComputerSequence({computerSequence, setComputerSequence}){
     React.useEffect(() => {
         //console.log('Used useEffect() in AddToComputerSequence')
         //console.log(`Computer Sequence is: ${computerSequence}`)
         setComputerSequence(addToComputerSequence)
-        hasAddedToSequence = true
     }, [])
     return(
         <>

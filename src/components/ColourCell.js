@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap'
 
-function ColourCell({ colour, setUserSequence, userSequence, setShowComputerSequence }){
+function ColourCell({ colour, setUserSequence, userSequence, setShowComputerSequence, computerSequence }){
     let buttonColour = ''
     switch (colour) {
         case 'Red': buttonColour = 'outline-danger'
@@ -17,6 +17,35 @@ function ColourCell({ colour, setUserSequence, userSequence, setShowComputerSequ
         case 'Blue': buttonColour = 'outline-primary'
         break
     }
+    //event hook that should allow the buttons to flash for 1 sec each
+    React.useEffect(() => {
+        for(let i=0; i < computerSequence.length; i++){
+            console.log('new sequence, executing ColourCell useEffect')
+
+                if(computerSequence[i] == colour){
+                    switch (computerSequence[i]) {
+                        case 'Red': buttonColour = 'danger'
+                        break
+
+                        case 'Yellow': buttonColour = 'warning'
+                        break
+
+                        case 'Green': buttonColour = 'success'
+                        break
+
+                        case 'Blue': buttonColour = 'primary'
+                        break
+                    }
+                }
+                console.log(`buttonColour is ${buttonColour}`)
+                setTimeout(2000)
+
+                return () => {
+
+                }
+                }
+            },[computerSequence])
+
     return(
         <>
         <Button
