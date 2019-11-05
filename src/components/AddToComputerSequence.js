@@ -4,16 +4,20 @@ import React from 'react'
 
 const colours = ['Red','Green','Yellow','Blue']
 
+
 function AddToComputerSequence({computerSequence, setComputerSequence}){
+    let hasAddedToSequence = false
+
     React.useEffect(() => {
         //console.log('Used useEffect() in AddToComputerSequence')
-        //console.log(`Computer Sequence is: ${computerSequence}`)
-        setComputerSequence(addToComputerSequence)
-    }, [])
+        console.log(`Computer Sequence is: ${computerSequence}`)
+        setComputerSequence(prevSequence => addToComputerSequence(prevSequence))
+        hasAddedToSequence = true
+    }, [hasAddedToSequence])
     return(
         <>
-            <h4>{'Enter the sequence: '}</h4>
-            <h4>{computerSequence}</h4>
+            {/* <h4>{'Enter the sequence: '}</h4>
+            <h4>{computerSequence}</h4> */}
         </>
     )
 }

@@ -2,60 +2,81 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap'
 
-function ColourCell({ colour, setUserSequence, userSequence, setShowComputerSequence, computerSequence }){
+function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
     let buttonColour = ''
-    switch (colour) {
-        case 'Red': buttonColour = 'outline-danger'
-        break
 
-        case 'Yellow': buttonColour = 'outline-warning'
-        break
+    if(colourToFlash == colour) {
+        switch (colour) {
+            case 'Red': buttonColour = 'danger'
+            break
 
-        case 'Green': buttonColour = 'outline-success'
-        break
+            case 'Yellow': buttonColour = 'warning'
+            break
 
-        case 'Blue': buttonColour = 'outline-primary'
-        break
+            case 'Green': buttonColour = 'success'
+            break
+
+            case 'Blue': buttonColour = 'primary'
+            break
+        }
     }
+    else{
+        switch (colour) {
+            case 'Red': buttonColour = 'outline-danger'
+            break
+
+            case 'Yellow': buttonColour = 'outline-warning'
+            break
+
+            case 'Green': buttonColour = 'outline-success'
+            break
+
+            case 'Blue': buttonColour = 'outline-primary'
+            break
+        }
+    }
+
     //event hook that should allow the buttons to flash for 1 sec each
-    React.useEffect(() => {
-        for(let i=0; i < computerSequence.length; i++){
-            console.log('new sequence, executing ColourCell useEffect')
+    // React.useEffect(() => {
+    //     for(let i=0; i < computerSequence.length; i++){
+    //         console.log('new sequence, executing ColourCell useEffect')
 
-                if(computerSequence[i] == colour){
-                    switch (computerSequence[i]) {
-                        case 'Red': buttonColour = 'danger'
-                        break
+    //             if(computerSequence[i] == colour){
+    //                 switch (computerSequence[i]) {
+    //                     case 'Red': buttonColour = 'danger'
+    //                     break
 
-                        case 'Yellow': buttonColour = 'warning'
-                        break
+    //                     case 'Yellow': buttonColour = 'warning'
+    //                     break
 
-                        case 'Green': buttonColour = 'success'
-                        break
+    //                     case 'Green': buttonColour = 'success'
+    //                     break
 
-                        case 'Blue': buttonColour = 'primary'
-                        break
-                    }
-                }
-                console.log(`buttonColour is ${buttonColour}`)
-                setTimeout(2000)
+    //                     case 'Blue': buttonColour = 'primary'
+    //                     break
+    //                 }
+    //             }
+    //             console.log(`buttonColour is ${buttonColour}`)
+    //             setTimeout(2000)
 
-                return () => {
+    //             return () => {
 
-                }
-                }
-            },[computerSequence])
+    //             }
+    //             }
+    //         },[computerSequence])
 
     return(
         <>
         <Button
             variant = {buttonColour}
             onClick = { () => {
-                //computerSequence should hide when the user begins adding their sequence
-                setShowComputerSequence(false)
-                //console.log(colour,userSequence)
-                setUserSequence(addToUserSequence(colour, userSequence))
-                console.log(`userSequence is:  ${addToUserSequence(colour, userSequence)}`)
+                //onClick function should only be available when the computer sequence has stopped showing
+                if(!colourToFlash){
+                    //computerSequence should hide when the user begins adding their sequence
+                    //console.log(colour,userSequence)
+                    setUserSequence(addToUserSequence(colour, userSequence))
+                    console.log(`userSequence is:  ${addToUserSequence(colour, userSequence)}`)
+                }
         }}>
             {colour}
         </Button>

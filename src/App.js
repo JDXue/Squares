@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="container App">
-      { (!hasGameStarted)
+      { (!hasGameStarted) //display main menu and instructions
         ?<>
           <h1>Simon Says</h1>
           <br></br>
@@ -21,7 +21,7 @@ function App() {
 
           <>
             {
-              (!hasGameStarted)
+              (!hasGameStarted) //display the start button if game not started
                 ? <StartGame
                   hasGameStarted={hasGameStarted}
                   setHasGameStarted={setHasGameStarted}
@@ -36,7 +36,7 @@ function App() {
       }
       <br></br><br></br>
       <Game
-        hasGameStarted={hasGameStarted}
+        hasGameStarted={hasGameStarted} //begin game
         round={round}
         setRound={setRound}
 
