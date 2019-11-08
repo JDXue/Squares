@@ -5,8 +5,8 @@ import { Button } from 'react-bootstrap'
 
 function TestSequence({
     round, setRound, isCorrectSequence, setIsCorrectSequence, userSequence, setUserSequence, computerSequence, setShowComputerSequence}){
-        let testSequenceName = 'Test Sequence'
-        let testMessage = ''
+    const [victoryMessage, setVictoryMessage] = React.useState('')
+
     return(
         <>
             <Button
@@ -14,23 +14,26 @@ function TestSequence({
                 onClick={() => {
                     console.log(`This is the user sequence: ${userSequence}, and this is the computer sequence: ${computerSequence} `)
                     isCorrectSequence = testUserSequence(userSequence, computerSequence)
-                    console.log(isCorrectSequence)
+                    // console.log(isCorrectSequence)
                     if(isCorrectSequence){
-                        testMessage = 'Correct!'
+                        console.log('Correct!')
                         //reset user
                         setUserSequence([])
                         setShowComputerSequence(true)
+                        setVictoryMessage('Correct!')
                         setRound((round) + 1)
+
                     }
                     else{
                         setIsCorrectSequence(false)
-                        testMessage = "Incorrect!"
+                        console.log('Incorrect!')
 
                     }
                 }}
-            >{testSequenceName}</Button>
-            {/* This is not showing up at the moment */}
-            <h3>{testMessage}</h3>
+            >Test Sequence</Button>
+
+            <h3>{victoryMessage}</h3>
+
         </>
     )
 }

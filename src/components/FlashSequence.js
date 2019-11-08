@@ -12,14 +12,18 @@ function FlashSequence({computerSequence, setShowComputerSequence}){
     //console.log(computerSequenceClone)
 
     React.useEffect(()=>{
+
         setTimeout(() => {
             setColourToFlash(computerSequenceClone[sequenceCounter])
-            // console.log(`colour to flash is ${colourToFlash}`)
-            if (sequenceCounter < computerSequenceClone.length) {
-                setSequenceCounter(prevCount => prevCount + 1)
-            } else setShowComputerSequence(false)
-        }, 1000)
+                    // console.log(`colour to flash is ${colourToFlash}`)
+                    if (sequenceCounter <= computerSequenceClone.length) {
+                        setSequenceCounter(prevCount => prevCount + 1)
+                    } else setShowComputerSequence(false)
+        },1000)
+
+
     }, [sequenceCounter])
+
 
     return(
         <>

@@ -4,8 +4,10 @@ import { Button } from 'react-bootstrap'
 
 function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
     let buttonColour = ''
-
+    //action for flashing colour sequence
     if(colourToFlash == colour) {
+
+
         switch (colour) {
             case 'Red': buttonColour = 'danger'
             break
@@ -19,7 +21,30 @@ function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
             case 'Blue': buttonColour = 'primary'
             break
         }
+
+
+
+        // setTimeout(() => {
+        //     switch (colour) {
+        //         case 'Red': buttonColour = 'outline-danger'
+        //         break
+
+        //         case 'Yellow': buttonColour = 'outline-warning'
+        //         break
+
+        //         case 'Green': buttonColour = 'outline-success'
+        //         break
+
+        //         case 'Blue': buttonColour = 'outline-primary'
+        //         break
+        //     }
+        // },1000)
+
+
+
     }
+
+    //action for user input
     else{
         switch (colour) {
             case 'Red': buttonColour = 'outline-danger'
@@ -35,6 +60,11 @@ function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
             break
         }
     }
+
+
+
+
+
 
     //event hook that should allow the buttons to flash for 1 sec each
     // React.useEffect(() => {
