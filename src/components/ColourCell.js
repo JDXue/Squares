@@ -73,7 +73,7 @@ function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
                 //onClick function should only be available when the computer sequence has stopped showing
                 if(!colourToFlash){
                     //computerSequence should hide when the user begins adding their sequence
-                    //console.log(colour,userSequence)
+                    console.log(colour,userSequence) //userSequence is undefined here
                     setUserSequence(addToUserSequence(colour, userSequence))
                     console.log(`userSequence is:  ${addToUserSequence(colour, userSequence)}`)
                 }

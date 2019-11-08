@@ -2,9 +2,8 @@ import './Game.css'
 
 import React from 'react'
 import TestSequence from './TestSequence'
-import AddToComputerSequence from './AddToComputerSequence'
 import UserInput from './UserInput'
-import FlashSequence from './FlashSequence'
+import ShowingComputerSequence from './ShowingComputerSequence'
 
 
 //values that should not run everytime game function is called
@@ -15,20 +14,30 @@ function Game({ hasGameStarted, round, setRound}){
 
     const [isCorrectSequence, setIsCorrectSequence] = React.useState(true)
     const[userSequence, setUserSequence] = React.useState([])
-    const[computerSequence, setComputerSequence] = React.useState([])
+    const[computerSequence, setComputerSequence] = React.useState([''])
 
     //boolean allows the computer's sequence to toggle on and off, set by ColourCell and TestSequence
     const[showComputerSequence, setShowComputerSequence] = React.useState(true)
     //indicates when flashing colours have finished
-    const[isSequenceFinished, setIsSequenceFinished] = React.useState(false)
 
     //console.log(`Has game started? ${hasGameStarted}`)
 
     //Output 1: when new colour has not been added this should run once
     if ((hasGameStarted) && (showComputerSequence)){
         console.log(`Computer sequence: ${computerSequence}`)
+        console.log(userSequence)
+
     }
 
+    const showingSequenceProps = {
+        setComputerSequence,
+        setShowComputerSequence,
+        computerSequence,
+        round,
+        showComputerSequence
+    }
+
+    const testSequenceProps = {}
 
     return(
         <>
@@ -38,28 +47,7 @@ function Game({ hasGameStarted, round, setRound}){
                 { //display colours
                     //display colour sequence
                     ((hasGameStarted) && (showComputerSequence)) //this section shows the colour sequence
-                    ?
-                        <>
-                            <h3>Round {round}</h3>
-                            <br></br>
-                            <br></br>
-
-                            <AddToComputerSequence
-                                computerSequence={computerSequence}
-                                setComputerSequence={setComputerSequence}
-                            />
-
-                            {((computerSequence.length > 0))?
-                                <FlashSequence
-                                    computerSequence={computerSequence}
-                                    showComputerSequence={showComputerSequence}
-                                    setShowComputerSequence={setShowComputerSequence}
-                                />
-                            : <></>
-                            }
-
-                        </>
-
+                    ? <ShowingComputerSequence {...showingSequenceProps} />
 
                     :
                         //once colour sequence has shown (showComputerSequence is false)
@@ -69,7 +57,11 @@ function Game({ hasGameStarted, round, setRound}){
                                 <br></br>
                                 <br></br>
 
-                                <UserInput/>
+                                <UserInput
+                                    computerSequence={computerSequence}
+                                    userSequence={userSequence}
+                                    setUserSequence={setUserSequence}
+                                />
                                 <br></br>
                                 <br></br>
 
@@ -105,6 +97,8 @@ function Game({ hasGameStarted, round, setRound}){
 )
 
 }
+
+
 
 export default Game;
 

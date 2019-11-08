@@ -3,6 +3,7 @@ import React from 'react'
 import ColourCell from './ColourCell'
 
 function UserInput({computerSequence, setUserSequence, userSequence}){
+    console.log(userSequence)
     return(
         <div className="colour-grid">
             <ColourCell
