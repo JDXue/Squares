@@ -1,24 +1,30 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 import { Button } from 'react-bootstrap'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory
+} from "react-router-dom";
 
 
-function StartGame({ hasGameStarted, setHasGameStarted, setRound}){
+function StartGame(){
+    const history = useHistory()
     return(
-        <div className="container">
-           <Button
+        <div className="container start-button">
+            <Button
             variant="info"
-            onClick={ () => {
-                if(hasGameStarted == false){
-                    //console.log("This is the start button")
-                    setHasGameStarted(true)
-                    //this will show up the next time a direct button in Game.js is executed
-                    let firstRound = 0
-                    setRound(firstRound + 1)
-                }
+            onClick={() => {
+                history.push('/game')
+            }}>
+                Start Game
 
-            }}
-            >Start Game</Button>
+            </Button>
+
         </div>
     )
 }

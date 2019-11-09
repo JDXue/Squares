@@ -6,24 +6,25 @@ import UserInput from './UserInput'
 import ShowingComputerSequence from './ShowingComputerSequence'
 
 
+
+
 //values that should not run everytime game function is called
 
 
 
-function Game({ hasGameStarted, round, setRound}){
+function Game({ round, setRound}){
 
     const [isCorrectSequence, setIsCorrectSequence] = React.useState(true)
     const[userSequence, setUserSequence] = React.useState([])
-    const[computerSequence, setComputerSequence] = React.useState([''])
+    const[computerSequence, setComputerSequence] = React.useState([])
 
     //boolean allows the computer's sequence to toggle on and off, set by ColourCell and TestSequence
     const[showComputerSequence, setShowComputerSequence] = React.useState(true)
     //indicates when flashing colours have finished
 
-    //console.log(`Has game started? ${hasGameStarted}`)
 
     //Output 1: when new colour has not been added this should run once
-    if ((hasGameStarted) && (showComputerSequence)){
+    if (showComputerSequence){
         console.log(`Computer sequence: ${computerSequence}`)
         console.log(userSequence)
 
@@ -37,7 +38,6 @@ function Game({ hasGameStarted, round, setRound}){
         showComputerSequence
     }
 
-    const testSequenceProps = {}
 
     return(
         <>
@@ -46,12 +46,12 @@ function Game({ hasGameStarted, round, setRound}){
             <div className="game-grid">
                 { //display colours
                     //display colour sequence
-                    ((hasGameStarted) && (showComputerSequence)) //this section shows the colour sequence
+                    (showComputerSequence) //this section shows the colour sequence
                     ? <ShowingComputerSequence {...showingSequenceProps} />
 
                     :
                         //once colour sequence has shown (showComputerSequence is false)
-                        ((hasGameStarted) && (isCorrectSequence)) //allows user to enter their guess after sequence has finished
+                        (isCorrectSequence) //allows user to enter their guess after sequence has finished
                         ?   <>
                                 <h3>Round {round}</h3>
                                 <br></br>
@@ -82,7 +82,7 @@ function Game({ hasGameStarted, round, setRound}){
                         <>
                             <h1>{`Incorrect! You managed to reach round ${round}`}</h1>
                             <br></br>
-                            <h2>{`Refresh page to try again`}</h2>
+                            <h2>{`Go to the main menu to try again`}</h2>
                         </>
                         : <></>
                 }

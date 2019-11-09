@@ -29,3 +29,29 @@
 .App-link {
   color: #09d3ac;
 }
+
+.nav{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px;
+}
+
+.nav-link{
+  padding: 10px;
+}
+
+.start-button{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+  a:hover{
+    color: lightblue;
+  }
+
+

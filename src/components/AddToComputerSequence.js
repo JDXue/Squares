@@ -10,7 +10,7 @@ function AddToComputerSequence({computerSequence, setComputerSequence}){
 
     React.useEffect(() => {
         //console.log('Used useEffect() in AddToComputerSequence')
-        console.log(`Computer Sequence is: ${computerSequence}`)
+        // console.log(`Computer Sequence is: ${computerSequence}`)
         setComputerSequence(prevSequence => addToComputerSequence(prevSequence))
         hasAddedToSequence = true
     }, [hasAddedToSequence])
