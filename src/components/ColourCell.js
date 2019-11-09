@@ -23,25 +23,6 @@ function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
         }
 
 
-
-        // setTimeout(() => {
-        //     switch (colour) {
-        //         case 'Red': buttonColour = 'outline-danger'
-        //         break
-
-        //         case 'Yellow': buttonColour = 'outline-warning'
-        //         break
-
-        //         case 'Green': buttonColour = 'outline-success'
-        //         break
-
-        //         case 'Blue': buttonColour = 'outline-primary'
-        //         break
-        //     }
-        // },1000)
-
-
-
     }
 
     //action for user input
@@ -61,39 +42,6 @@ function ColourCell({ colourToFlash, colour, setUserSequence, userSequence }){
         }
     }
 
-
-
-
-
-
-    //event hook that should allow the buttons to flash for 1 sec each
-    // React.useEffect(() => {
-    //     for(let i=0; i < computerSequence.length; i++){
-    //         console.log('new sequence, executing ColourCell useEffect')
-
-    //             if(computerSequence[i] == colour){
-    //                 switch (computerSequence[i]) {
-    //                     case 'Red': buttonColour = 'danger'
-    //                     break
-
-    //                     case 'Yellow': buttonColour = 'warning'
-    //                     break
-
-    //                     case 'Green': buttonColour = 'success'
-    //                     break
-
-    //                     case 'Blue': buttonColour = 'primary'
-    //                     break
-    //                 }
-    //             }
-    //             console.log(`buttonColour is ${buttonColour}`)
-    //             setTimeout(2000)
-
-    //             return () => {
-
-    //             }
-    //             }
-    //         },[computerSequence])
 
     return(
         <>

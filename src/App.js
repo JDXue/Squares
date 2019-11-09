@@ -6,6 +6,7 @@ import StartGame from './components/StartGame'
 import Game from './components/Game'
 import Menu from './components/Menu'
 import HighScore from './components/HighScore'
+import Instructions from './components/Instructions'
 
 import { Button } from 'react-bootstrap'
 
@@ -39,6 +40,10 @@ function App() {
 
           <Route path='/scoreboard'>
             <HighScore/>
+          </Route>
+
+          <Route path='/instructions'>
+            <Instructions/>
           </Route>
 
           <Route path='/'>
@@ -98,7 +103,11 @@ function Nav() {
           </div>
 
           <div className="nav-link">
-            <Link to="/scoreboard">Highscore Board</Link>
+            <Link to="/scoreboard">Highscores</Link>
+          </div>
+
+          <div className="nav-link">
+            <Link to="/instructions">Instructions</Link>
           </div>
       </div>
 

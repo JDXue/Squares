@@ -1,5 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 import { Button } from 'react-bootstrap'
 import {
     BrowserRouter as Router,
@@ -13,7 +15,7 @@ import {
 function StartGame(){
     const history = useHistory()
     return(
-        <div>
+        <div className="container start-button">
             <Button
             variant="info"
             onClick={() => {

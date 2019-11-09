@@ -38,7 +38,6 @@ function Game({ round, setRound}){
         showComputerSequence
     }
 
-    const testSequenceProps = {}
 
     return(
         <>
@@ -83,7 +82,7 @@ function Game({ round, setRound}){
                         <>
                             <h1>{`Incorrect! You managed to reach round ${round}`}</h1>
                             <br></br>
-                            <h2>{`Refresh page to try again`}</h2>
+                            <h2>{`Go to the main menu to try again`}</h2>
                         </>
                         : <></>
                 }
